@@ -1,7 +1,16 @@
+import { Columns, Heading } from 'react-bulma-components';
+import ListPeliculas from './components/ListPeliculas';
 
 const App = () => {
   return (
-    <h1>HOLA MUNDO</h1>
+    <Columns>
+      <Columns.Column>
+        <Heading weight="bold" size="4">UTILIZANDO BULMA-COMPONENTS</Heading>
+      </Columns.Column>
+      <Columns.Column>
+        <ListPeliculas />
+      </Columns.Column>
+    </Columns>
   );
 }
 
