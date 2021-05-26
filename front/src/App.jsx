@@ -1,14 +1,14 @@
 import { Columns, Heading } from 'react-bulma-components';
 import ListPeliculas from './components/ListPeliculas';
 
-const App = () => {
+const App = ({ history }) => {
   return (
     <Columns>
       <Columns.Column>
         <Heading weight="bold" size="4">UTILIZANDO BULMA-COMPONENTS</Heading>
       </Columns.Column>
       <Columns.Column>
-        <ListPeliculas />
+        <ListPeliculas history={history} />
       </Columns.Column>
     </Columns>
   );

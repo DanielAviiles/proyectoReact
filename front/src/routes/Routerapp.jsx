@@ -14,10 +14,10 @@ const Routerapp = () => {
     <Router>
       <Container mt="6">
         <Switch>
-          <Route exact path='/' render={(props) => (<App {...props} />)} />
+          <Route exact path='/listar' render={(props) => (<App {...props} />)} />
           <Route exact path='/pelicula/:idPeli'
               render={(props) => (<FormModify {...props} />)} />
-          <Redirect to="/" />
+          <Redirect to="/listar" />
         </Switch>
       </Container>
     </Router>

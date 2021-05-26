@@ -5,8 +5,8 @@ import axios from 'axios';
 const { REACT_APP_API } = process.env;
 const endPoint = `${REACT_APP_API}/listar`;
 
-const ListPeliculas = () => {
-
+const ListPeliculas = ({ history }) => {
+  
   const [infoData, setInfoData] = useState([]);
 
   const consumeData = useCallback( async () => {
@@ -21,6 +21,10 @@ const ListPeliculas = () => {
   useEffect(() => {
     consumeData()
   }, [consumeData]);
+
+  const handleClick = (id) => {
+    history.replace(`/pelicula/${id}`)
+  }
 
   return (
     <Card>
@@ -44,8 +48,8 @@ const ListPeliculas = () => {
                       <td>{ item.nombre }</td>
                       <td>{ item.descripcion }</td>
                       <td>
-                        <Button color="info" onClick={() => console.log('Hola')}>
-                        <i className="fas fa-edit"></i>
+                        <Button color="info" onClick={() => handleClick(item.id)}>
+                          <i className="fas fa-edit"></i>
                         </Button>
                       </td>
                     </tr>
