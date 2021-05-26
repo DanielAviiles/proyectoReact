@@ -10,7 +10,7 @@ const infoPelicula = async (idPeli) => (
 
 const modifyPelicula = async (infoPeli) => (
   await pool.query(`UPDATE pelicula 
-    SET nombre=${infoPeli.nombre} descripcion=${infoPeli.descripcion}
+    SET nombre='${infoPeli.nombre}', descripcion='${infoPeli.descripcion}'
     WHERE id=${infoPeli.id}`)
 )
 

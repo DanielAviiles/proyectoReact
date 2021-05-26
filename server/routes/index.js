@@ -14,9 +14,7 @@ router.get('/info/:idPeli', async (req, res) => {
 })
 
 router.put('/modificar', async (req, res) => {
-  // const { idPeli } = req.params;
-  console.log(req.body);
-  // await peliM.modifyPelicula(req.body);
+  await peliM.modifyPelicula(req.body).then(() => res.json({ status : 200 }));
 });
 
 module.exports = router;

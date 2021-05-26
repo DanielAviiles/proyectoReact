@@ -31,11 +31,13 @@ const FormModify = ({ history, match: { params } }) => {
 
   const modifyData = useCallback(async () => {
     try {
-      await axios.put(`${endPoint}/modificar`, form);
+      await axios.put(`${endPoint}/modificar`, form).then(() => {
+        history.replace('/');
+      });
     } catch (err) {
       console.warn(err);
     }
-  }, [form])
+  }, [form, history])
 
   const handleInputChange = ({ target }) => {
     setForm((current) => ({

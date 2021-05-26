@@ -4,7 +4,7 @@ import ListPeliculas from './components/ListPeliculas';
 const App = ({ history }) => {
   return (
     <Columns>
-      <Columns.Column>
+      <Columns.Column className="is-two-fifths">
         <Heading weight="bold" size="4">UTILIZANDO BULMA-COMPONENTS</Heading>
       </Columns.Column>
       <Columns.Column>
