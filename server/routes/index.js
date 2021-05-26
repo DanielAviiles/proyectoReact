@@ -13,8 +13,10 @@ router.get('/info/:idPeli', async (req, res) => {
   res.json({ peli });
 })
 
-router.put('/modificar/:idPeli', async (req, res) => {
-  
+router.put('/modificar', async (req, res) => {
+  // const { idPeli } = req.params;
+  console.log(req.body);
+  // await peliM.modifyPelicula(req.body);
 });
 
 module.exports = router;

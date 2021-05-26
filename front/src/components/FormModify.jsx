@@ -3,7 +3,7 @@ import { Button, Card, Columns, Content, Form, Icon } from 'react-bulma-componen
 import axios from 'axios';
 
 const { REACT_APP_API } = process.env;
-const endPoint = `${REACT_APP_API}/info`;
+const endPoint = `${REACT_APP_API}`;
 
 const FormModify = ({ history, match: { params } }) => {
   const [form, setForm] = useState({
@@ -14,7 +14,7 @@ const FormModify = ({ history, match: { params } }) => {
 
   const consumeData = useCallback(async () => {
     try {
-      const { data: { peli } } = await axios.get(`${endPoint}/${params.idPeli}`);
+      const { data: { peli } } = await axios.get(`${endPoint}/info/${params.idPeli}`);
       if (peli.length === 0) {
         history.replace('/');
         return;
@@ -27,7 +27,15 @@ const FormModify = ({ history, match: { params } }) => {
 
   useEffect(() => {
     consumeData();
-  }, [consumeData])
+  }, [consumeData]);
+
+  const modifyData = useCallback(async () => {
+    try {
+      await axios.put(`${endPoint}/modificar`, form);
+    } catch (err) {
+      console.warn(err);
+    }
+  }, [form])
 
   const handleInputChange = ({ target }) => {
     setForm((current) => ({
@@ -64,7 +72,7 @@ const FormModify = ({ history, match: { params } }) => {
                   </Form.Control>
                 </Form.Field>
                 <Button.Group>
-                  <Button fullwidth rounded color="primary" onClick={() => console.log(form)}>Editar</Button>
+                  <Button fullwidth rounded color="primary" onClick={modifyData}>Editar</Button>
                 </Button.Group>
               </Content>
             </Card.Content>
